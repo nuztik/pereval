@@ -3,7 +3,7 @@ from django.db import models
 
 class Users(models.Model):
     emails = models.EmailField(unique=True)
-    phone = models.CharField(max_length=12)
+    phone = models.CharField(max_length=12, null=True)
     fam = models.CharField(max_length=30)
     nam = models.CharField(max_length=30)
     otc = models.CharField(max_length=30, null=True)
@@ -13,9 +13,9 @@ class Users(models.Model):
 
 
 class Coords(models.Model):
-    latitude = models.FloatField(max_length=5, blank=True)
-    longitude = models.FloatField(max_length=5, blank=True)
-    height = models.IntegerField(max_length=5, blank=True)
+    latitude = models.FloatField(blank=True, null=True)
+    longitude = models.FloatField(blank=True, null=True)
+    height = models.IntegerField(blank=True, null=True)
 
 
 class Season(models.Model):
@@ -65,6 +65,6 @@ class Pereval_added(models.Model):
     connect = models.TextField()
     add_time = models.DateTimeField(auto_now_add=True)
     coords = models.ForeignKey(Coords, on_delete=models.CASCADE)
-    season = models.ForeignKey(Season, on_delete=models.CASCADE)
+    season = models.ForeignKey(Season, on_delete=models.CASCADE, default='')
     images = models.ForeignKey(Pereval_image, on_delete=models.CASCADE, default=0)
     status = models.CharField(max_length=20, choices=STATUS, default='new')
