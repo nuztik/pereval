@@ -1,0 +1,13 @@
+{% extends 'flatpages/default.html' %}
+
+<!-- Название у нас будет Product -->
+{% block title %}
+Pereval
+{% endblock title %}
+
+<!-- В контенте на странице мы выводим сам товар, идентификатор которого был передан в url -->
+{% block content %}
+{% for pereval in perevals %}
+
+    {% endfor %}
+{% endblock content %}
